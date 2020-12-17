@@ -1,12 +1,16 @@
-package com.cpgp.free;
+package com.cpgp.gui;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import com.cpgp.arrays.ArrayOfPlayers;
+import com.cpgp.entities.Player;
+
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JButton;
@@ -14,7 +18,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Principal extends JFrame {
+public class MainMenu extends JFrame {
 
 	/**
 	 * 
@@ -22,8 +26,8 @@ public class Principal extends JFrame {
 	private static final long serialVersionUID = -7921530987200051397L;
 	private JPanel contentPane;
 	private JTextField txtNombre;
-	private JTable tblParticipantes;
-	private DefaultTableModel dtm = new DefaultTableModel();
+	public static JTable tblPlayers = new JTable();;
+	ArrayOfPlayers arrayOfPlayers = new ArrayOfPlayers();
 
 	/**
 	 * Launch the application.
@@ -32,7 +36,7 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					MainMenu frame = new MainMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +48,7 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 440, 469);
 		contentPane = new JPanel();
@@ -70,24 +74,35 @@ public class Principal extends JFrame {
 		scrollPane.setBounds(34, 98, 358, 188);
 		contentPane.add(scrollPane);
 		
-		tblParticipantes = new JTable();
-		dtm.addColumn("Codigo");
-		dtm.addColumn("Nombre");
-		dtm.addColumn("");
-		dtm.addColumn("");
-		tblParticipantes.setModel(dtm);
-		scrollPane.setViewportView(tblParticipantes);
+		
+		scrollPane.setViewportView(tblPlayers);
+		
+		tblPlayers.setModel(arrayOfPlayers);
 	}
 	protected void actionPerformedBtnAgregar(ActionEvent e) {
+		System.out.println(arrayOfPlayers.getSize());
 		String nombre = leerNombre();
-		
-		Object row[] = {1, nombre, "", ""};
-		
-		dtm.addRow(row);
-		
+		Player c=new Player(arrayOfPlayers.generateID(), nombre);
+		arrayOfPlayers.addPlayer(c);
+		System.out.println(arrayOfPlayers.getSize());
+		System.out.println(arrayOfPlayers.getValueAt(0, 0));
+		System.out.println(arrayOfPlayers.getValueAt(0, 1));
+		arrayOfPlayers.fireTableDataChanged();
 	}
 	
 	public String leerNombre(){
 		return txtNombre.getText();
 	}
+	
+//	public static void setTableModel(TableModel x) {
+//		
+//		tblPlayers.getColumnModel().getColumn(0).setMinWidth(0);
+//		tblPlayers.getColumnModel().getColumn(0).setMaxWidth(0);
+//		tblPlayers.getColumnModel().getColumn(0).setWidth(0);
+//	}
+//	
+//	private void refreshTable(TableModel x) {
+//		setTableModel(x);
+//		//Place custom buttons in a column of the table according to the column index
+//	}
 }
