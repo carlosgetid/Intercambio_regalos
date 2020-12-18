@@ -6,7 +6,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.TableModel;
 
 import com.cpgp.arrays.ArrayOfPlayers;
 import com.cpgp.entities.Player;
@@ -25,9 +24,10 @@ public class MainMenu extends JFrame {
 	 */
 	private static final long serialVersionUID = -7921530987200051397L;
 	private JPanel contentPane;
-	private JTextField txtNombre;
+	private JTextField txtName;
 	public static JTable tblPlayers = new JTable();;
 	ArrayOfPlayers arrayOfPlayers = new ArrayOfPlayers();
+	private JButton btnListo;
 
 	/**
 	 * Launch the application.
@@ -56,10 +56,10 @@ public class MainMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		txtNombre = new JTextField();
-		txtNombre.setBounds(125, 25, 114, 19);
-		contentPane.add(txtNombre);
-		txtNombre.setColumns(10);
+		txtName = new JTextField();
+		txtName.setBounds(125, 25, 114, 19);
+		contentPane.add(txtName);
+		txtName.setColumns(10);
 		
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
@@ -78,31 +78,43 @@ public class MainMenu extends JFrame {
 		scrollPane.setViewportView(tblPlayers);
 		
 		tblPlayers.setModel(arrayOfPlayers);
+		
+		btnListo = new JButton("Listo");
+		btnListo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actionPerformedBtnListo(e);
+			}
+		});
+		btnListo.setBounds(295, 378, 117, 25);
+		contentPane.add(btnListo);
+		
+		focusName();
 	}
 	protected void actionPerformedBtnAgregar(ActionEvent e) {
-		System.out.println(arrayOfPlayers.getSize());
 		String nombre = leerNombre();
 		Player c=new Player(arrayOfPlayers.generateID(), nombre);
 		arrayOfPlayers.addPlayer(c);
 		System.out.println(arrayOfPlayers.getSize());
-		System.out.println(arrayOfPlayers.getValueAt(0, 0));
-		System.out.println(arrayOfPlayers.getValueAt(0, 1));
 		arrayOfPlayers.fireTableDataChanged();
+		clearName();
+		focusName();
 	}
 	
 	public String leerNombre(){
-		return txtNombre.getText();
+		return txtName.getText();
 	}
 	
-//	public static void setTableModel(TableModel x) {
-//		
-//		tblPlayers.getColumnModel().getColumn(0).setMinWidth(0);
-//		tblPlayers.getColumnModel().getColumn(0).setMaxWidth(0);
-//		tblPlayers.getColumnModel().getColumn(0).setWidth(0);
-//	}
-//	
-//	private void refreshTable(TableModel x) {
-//		setTableModel(x);
-//		//Place custom buttons in a column of the table according to the column index
-//	}
+	public void clearName(){
+		txtName.setText("");;
+	}
+	
+	public void focusName(){
+		txtName.requestFocus();
+	}
+	
+
+	protected void actionPerformedBtnListo(ActionEvent e) {
+		Match gui = new Match(arrayOfPlayers);
+		gui.setVisible(true);
+	}
 }
