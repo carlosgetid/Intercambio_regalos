@@ -80,17 +80,19 @@ public class Match extends JFrame {
 		JLabel lblRealizarSorteo = new JLabel("Realizar sorteo");
 		lblRealizarSorteo.setBounds(278, 303, 210, 15);
 		contentPane.add(lblRealizarSorteo);
+		System.out.println("entro");
 	}
 	protected void actionPerformedBtnEmpezar(ActionEvent e) {
-		String target = "";
-
+		String receptor = "";
+//		search player to be receptor
+//		the receptor cannot be the current player or already be a receptor or be sender of the current player
 		int number;
 		do {
 			number = randomNumber(arrayOfPlayers.getSize(), 0);
 		}
 		while(number == id || arrayOfPlayers.getPlayerByID(number).isReceptor() || arrayOfPlayers.getPlayerByID(number).getIdTarget()==id);
 		
-		target = arrayOfPlayers.getPlayerByID(number).getName(); 
+		receptor = arrayOfPlayers.getPlayerByID(number).getName(); 
 		
 //		set the player to be shown as receptor
 		arrayOfPlayers.getPlayerByID(number).setReceptor(true);
@@ -98,11 +100,66 @@ public class Match extends JFrame {
 //		set current player his receptor id
 		arrayOfPlayers.getPlayerByID(id).setIdTarget(number);
 		
-		JOptionPane.showMessageDialog(this, target);
-		dispose();
+		int counter = arrayOfPlayers.getSize();
+//		System.out.println("tamaño total: "+counter);
+//		System.out.println("ya jugo :"+id);
+		for (int i = 1; i <= arrayOfPlayers.getSize(); i++) {
+			if(arrayOfPlayers.getPlayerByID(i).isTurn())
+				counter--;
+		}
 		
+		int ultimojugadorID = 0;
+		
+		for (int i = 1; i <= arrayOfPlayers.getSize(); i++) {
+			if(arrayOfPlayers.getPlayerByID(i).isTurn()==false)
+				ultimojugadorID = i;
+		}
+		
+		boolean penultimojugador = (counter==1);
+		
+		if(penultimojugador) {
+			
+			int idqueda = 0;
+			for (int i = 1; i <= arrayOfPlayers.getSize(); i++) {
+				if(arrayOfPlayers.getPlayerByID(i).isReceptor())
+					idqueda = i;
+			}
+			
+			while(ultimojugadorID==idqueda) {
+				do {
+					number = randomNumber(arrayOfPlayers.getSize(), 0);
+				}
+				while(number == id || arrayOfPlayers.getPlayerByID(number).isReceptor() || arrayOfPlayers.getPlayerByID(number).getIdTarget()==id);
+			}
+			
+//			set the player to be shown as receptor
+			arrayOfPlayers.getPlayerByID(number).setReceptor(true);
+			
+//			set current player his receptor id
+			arrayOfPlayers.getPlayerByID(id).setIdTarget(number);
+		}
+		
+		
+
+		
+		JOptionPane.showMessageDialog(this, receptor);
+		
+//		int counter = arrayOfPlayers.getSize();
+//		System.out.println("tamaño total: "+counter);
+//		System.out.println("ya jugo :"+id);
+//		for (int i = 1; i <= arrayOfPlayers.getSize(); i++) {
+//			if(arrayOfPlayers.getPlayerByID(i).isTurn())
+//				counter--;
+//		}
+//		System.out.println("quedan: "+counter);
+//		
+//		dispose();
+//		if(counter > 0) {
 		Match gui = new Match(arrayOfPlayers);
 		gui.setVisible(true);
+//		}
+//		else
+//			dispose();
 	}
 	
 	private int randomNumber(int maxValue, int minValue) {

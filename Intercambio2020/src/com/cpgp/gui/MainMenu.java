@@ -91,16 +91,15 @@ public class MainMenu extends JFrame {
 		focusName();
 	}
 	protected void actionPerformedBtnAgregar(ActionEvent e) {
-		String nombre = leerNombre();
+		String nombre = readName();
 		Player c=new Player(arrayOfPlayers.generateID(), nombre);
 		arrayOfPlayers.addPlayer(c);
-		System.out.println(arrayOfPlayers.getSize());
 		arrayOfPlayers.fireTableDataChanged();
 		clearName();
 		focusName();
 	}
 	
-	public String leerNombre(){
+	public String readName(){
 		return txtName.getText();
 	}
 	
