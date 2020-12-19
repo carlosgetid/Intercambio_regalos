@@ -62,6 +62,15 @@ public class Player {
 	public void setReceptor(boolean receptor) {
 		this.receptor = receptor;
 	}
+
+
+	@Override
+	public String toString() {
+		return (
+				"ID : "+this.getId()+"\n"+
+				"Name : "+this.getName()+"\n"
+				);
+	}
 	
 	
 	

@@ -1,6 +1,7 @@
 package com.cpgp.arrays;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -56,6 +57,16 @@ public class ArrayOfPlayers extends AbstractTableModel{
 				l=c.getId();
 		return l;
 	}
+	
+	public ArrayList<Player> randomArray() {
+		Collections.shuffle(aOfPlay);
+		return aOfPlay;
+	}
+	
+//	public void replace(int index, Player p) {
+//		aOfPlay.set(index, p);
+//	}
+	
 //	
 //	// TODO : Read data from text file
 //	private void loadOffCategories() {

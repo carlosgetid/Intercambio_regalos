@@ -15,6 +15,9 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class MainMenu extends JFrame {
@@ -28,6 +31,8 @@ public class MainMenu extends JFrame {
 	public static JTable tblPlayers = new JTable();;
 	ArrayOfPlayers arrayOfPlayers = new ArrayOfPlayers();
 	private JButton btnListo;
+	
+	ArrayList<ArrayOfPlayers> arrayOfPosibilities = new ArrayList<ArrayOfPlayers>();
 
 	/**
 	 * Launch the application.
@@ -113,7 +118,51 @@ public class MainMenu extends JFrame {
 	
 
 	protected void actionPerformedBtnListo(ActionEvent e) {
-		Match gui = new Match(arrayOfPlayers, false, 0, 0);
-		gui.setVisible(true);
+
+		ArrayList<Player> arr = arrayOfPlayers.randomArray();
+		
+		for (Player player : arr) {			
+			System.out.println(player);
+		}
+		
+		ArrayList<Player> arr2 = new ArrayList<Player>();
+		
+//		for (int i = arr.size()-1; i >= 0; i--) {
+//			if(i == arr.size()-1) {
+//				arr.set(i, arr.get(0));				
+//			}
+//			else {
+//				arr.set(i, arr.get(i+1));								
+//			}
+//		}
+		
+		arr2 = arr;
+		
+		System.out.println("-----------------------------------");
+		System.out.println("-----------------------------------");
+		
+		Collections.rotate(arr2, -1);
+		
+		for (Player player : arr2) {
+			System.out.println(player);
+		}
+
+//		for (int i = 0; i < arrayOfPlayers.getSize(); i++) {
+			
+//			arrayOfPlayers.getPlayerByIndex(i) = randomNumber
+//			Player p = new Player(1, "");
+//			p.setId(randomNumber(1, 2));
+//			arrayOfPlayers[i]=arrayOfPlayers[i];
+//		}
+		
+//		arrayOfPosibilities.add();
+		
+//		Match gui = new Match(arrayOfPlayers, false, 0, 0);
+//		gui.setVisible(true);
+	}
+	
+	private int randomNumber(int maxValue, int minValue) {
+		int r=(int)(Math.random()*(minValue-maxValue))+maxValue;
+		return r;
 	}
 }
