@@ -113,7 +113,7 @@ public class MainMenu extends JFrame {
 	
 
 	protected void actionPerformedBtnListo(ActionEvent e) {
-		Match gui = new Match(arrayOfPlayers);
+		Match gui = new Match(arrayOfPlayers, false, 0, 0);
 		gui.setVisible(true);
 	}
 }
