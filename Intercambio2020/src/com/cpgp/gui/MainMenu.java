@@ -125,24 +125,20 @@ public class MainMenu extends JFrame {
 			System.out.println(player);
 		}
 		
+		System.out.println("-----------------------------------");
+		System.out.println("-----------------------------------");
+		
+
 		ArrayList<Player> arr2 = new ArrayList<Player>();
 		
-//		for (int i = arr.size()-1; i >= 0; i--) {
-//			if(i == arr.size()-1) {
-//				arr.set(i, arr.get(0));				
-//			}
-//			else {
-//				arr.set(i, arr.get(i+1));								
-//			}
-//		}
 		
 		arr2 = arr;
 		
-		System.out.println("-----------------------------------");
-		System.out.println("-----------------------------------");
-		
 		Collections.rotate(arr2, -1);
 		
+		
+		
+//		imprimir
 		for (Player player : arr2) {
 			System.out.println(player);
 		}
