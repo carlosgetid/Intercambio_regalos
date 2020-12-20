@@ -151,16 +151,14 @@ public class MainMenu extends JFrame {
 			int[] k2 = k[0].clone();
 			
 			
-			System.out.println("------------------TAMANNNNIO------------------");
-			System.out.println(arr.size());
-//			shuffle
 			do {
 				do {
-				for (int i=0;i<arr.size();i++) {
-					do
-					k2[i] = randomNumber(arr.size(), 0);
-					while(checkPreviousNumbers(i, k2));
-				}
+					for (int i=0;i<arr.size();i++) {
+//						shuffle
+						do
+						k2[i] = randomNumber(arr.size(), 0);
+						while(checkPreviousNumbers(i, k2));
+					}
 				}while(checkFirstArray(arr, k2, k)); 				
 			}while(evaluate3(k2,k));
 			k[p] = k2;
