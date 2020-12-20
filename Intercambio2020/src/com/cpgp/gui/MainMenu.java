@@ -130,19 +130,34 @@ public class MainMenu extends JFrame {
 		
 		int p = 1;
 		while (p < 10) {
-			
+			System.out.println("vuelta : "+p);
 //		RANDOM
 			@SuppressWarnings("unchecked")
 			int[] k2 = k[0].clone();
 			
 			
-			
+			System.out.println("------------------TAMANNNNIO------------------");
+			System.out.println(arr.size());
 //			shuffle
 			for (int i=0;i<arr.size();i++) {
-			    int swap = randomNumber(0, arr.size()-1);
-			    int temp = k2[swap];
-			    k2[swap] = k2[i];
-			    k2[i]=temp;
+				int swap;
+				do {
+					System.out.println("en el while");	
+			    	swap = randomNumber(arr.size()-1, -1);
+			    	System.out.println("swap : "+swap);	
+			    	System.out.println("i : "+i);	
+			    	int temp = k2[swap];
+			    	k2[swap] = k2[i];
+			    	k2[i]=temp;			    	
+			    System.out.println("primero : "+k[0][i]);	
+			    System.out.println("nuevo :" +k2[i]);	
+			    }while(
+			    		k2[0] == k[0][0] 
+			    		|| k2[1] == k[0][1] 
+			    				|| k2[2] == k[0][2] 
+			    						|| k2[3] == k[0][3]
+			    								|| k2[4] == k[0][4]
+			    										); 
 			}
 			
 			k[p] = k2;
@@ -151,16 +166,15 @@ public class MainMenu extends JFrame {
 		}
 			System.out.println("------------------RESULTADO-------------------");
 			System.out.println(Arrays.toString(k[0]));
-			System.out.println(Arrays.toString(k[1]));
-			System.out.println(Arrays.toString(k[2]));
-			System.out.println(Arrays.toString(k[3]));
-			System.out.println(Arrays.toString(k[4]));
-			System.out.println(Arrays.toString(k[5]));
-			System.out.println(Arrays.toString(k[6]));
-			System.out.println(Arrays.toString(k[7]));
-			System.out.println(Arrays.toString(k[8]));
-			System.out.println(Arrays.toString(k[9]));
-		
+			System.out.println("vuelta 1: "+ Arrays.toString(k[1]));
+			System.out.println("vuelta 2: "+ Arrays.toString(k[2]));
+			System.out.println("vuelta 3: "+ Arrays.toString(k[3]));
+			System.out.println("vuelta 4: "+ Arrays.toString(k[4]));
+			System.out.println("vuelta 5: "+ Arrays.toString(k[5]));
+			System.out.println("vuelta 6: "+ Arrays.toString(k[6]));
+			System.out.println("vuelta 7: "+ Arrays.toString(k[7]));
+			System.out.println("vuelta 8: "+ Arrays.toString(k[8]));
+			System.out.println("vuelta 9: "+ Arrays.toString(k[9]));
 		System.out.println("------------------NEW VERSION FIN------------------");
 		
 		
@@ -213,6 +227,7 @@ public class MainMenu extends JFrame {
 //		gui.setVisible(true);
 	}
 	
+//	puede retornar el maxValue y el minValue
 	private int randomNumber(int maxValue, int minValue) {
 		int r=(int)(Math.random()*(minValue-maxValue))+maxValue;
 		return r;
