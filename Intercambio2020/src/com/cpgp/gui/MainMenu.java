@@ -94,6 +94,20 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnListo);
 		
 		focusName();
+		
+//		int ba[] = new int[] {1, 2, 5, 3, 4};
+//		System.out.println(Arrays.toString(ba));
+//		
+//		int bo[] = new int[] {1, 2, 5, 3, 4};
+//		System.out.println(Arrays.toString(bo));
+//		
+//		if(Arrays.equals(ba, bo)) {
+//			System.out.println("son iguales");
+//		}
+//		else
+//			System.out.println("no son iguales");
+			
+		
 	}
 	protected void actionPerformedBtnAgregar(ActionEvent e) {
 		String nombre = readName();
@@ -141,13 +155,13 @@ public class MainMenu extends JFrame {
 			System.out.println(arr.size());
 //			shuffle
 			do {
-			do {
+				do {
 				for (int i=0;i<arr.size();i++) {
 					do
 					k2[i] = randomNumber(arr.size(), 0);
 					while(checkPreviousNumbers(i, k2));
 				}
-			}while(checkFirstArray(arr, k2, k)); 				
+				}while(checkFirstArray(arr, k2, k)); 				
 			}while(evaluate3(k2,k));
 			k[p] = k2;
 //		RANDOM FIN
