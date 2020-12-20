@@ -233,7 +233,7 @@ public class MainMenu extends JFrame {
 	
 	private boolean checkWithOthersArrays(int[] k2, int[][] k) {
 		boolean x;
-		for(int z=0; z < k.length; z++){
+		for(int z=1; z < k.length; z++){
 			System.out.println("valor de z : "+z);
 			if(Arrays.equals(k[z], k2)) {
 				x = true;
@@ -248,10 +248,15 @@ public class MainMenu extends JFrame {
 
 	private boolean evaluate3(int[] k2, int[][] k) {
 		System.out.println("este es el length :"+k[0].length);
-		for(int h = 0; h<k[0].length; h++){
-			for(int g = 0; g<k[0].length; g++){
-				if(k[0][g] == k2[h] && k[0][h] == k2[g])
-					return true;
+//		for two players is allowed
+		if(k[0].length == 2) 
+			return false;
+		else {
+			for(int h = 0; h<k[0].length; h++){
+				for(int g = 0; g<k[0].length; g++){
+					if(k[0][g] == k2[h] && k[0][h] == k2[g])
+						return true;
+				}
 			}
 		}
 		return false;
