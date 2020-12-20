@@ -13,7 +13,7 @@ public class ArrayOfPlayers extends AbstractTableModel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static ArrayList<Player> aOfPlay;
+	private ArrayList<Player> aOfPlay;
 	
 	public ArrayOfPlayers() {
 		aOfPlay=new ArrayList<Player>();
