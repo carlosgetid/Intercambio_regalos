@@ -16,7 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Random;
 import java.awt.event.ActionEvent;
 
 public class MainMenu extends JFrame {
@@ -119,6 +121,51 @@ public class MainMenu extends JFrame {
 		ArrayList<ArrayList<Player>> arrayOfPosibilities = new ArrayList<ArrayList<Player>>();
 		
 		ArrayList<Player> arr = arrayOfPlayers.randomArray();
+		
+		System.out.println("------------------NEW VERSION------------------");
+		int[][] k = new int[10][arr.size()];
+		for (int i = 0; i < arr.size(); i++) {
+			k[0][i] = arr.get(i).getId();			
+		}
+		
+		int p = 1;
+		while (p < 10) {
+			
+//		RANDOM
+			@SuppressWarnings("unchecked")
+			int[] k2 = k[0].clone();
+			
+			
+			
+//			shuffle
+			for (int i=0;i<arr.size();i++) {
+			    int swap = randomNumber(0, arr.size()-1);
+			    int temp = k2[swap];
+			    k2[swap] = k2[i];
+			    k2[i]=temp;
+			}
+			
+			k[p] = k2;
+//		RANDOM FIN
+			 p++;
+		}
+			System.out.println("------------------RESULTADO-------------------");
+			System.out.println(Arrays.toString(k[0]));
+			System.out.println(Arrays.toString(k[1]));
+			System.out.println(Arrays.toString(k[2]));
+			System.out.println(Arrays.toString(k[3]));
+			System.out.println(Arrays.toString(k[4]));
+			System.out.println(Arrays.toString(k[5]));
+			System.out.println(Arrays.toString(k[6]));
+			System.out.println(Arrays.toString(k[7]));
+			System.out.println(Arrays.toString(k[8]));
+			System.out.println(Arrays.toString(k[9]));
+		
+		System.out.println("------------------NEW VERSION FIN------------------");
+		
+		
+		
+		
 		
 		arrayOfPosibilities.add(arr);
 		
