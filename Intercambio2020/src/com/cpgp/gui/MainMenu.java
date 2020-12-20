@@ -127,60 +127,29 @@ public class MainMenu extends JFrame {
 			System.out.println(player);
 		}
 		
-		System.out.println("-----------------FIN------------------");
 		
-		@SuppressWarnings("unchecked")
-		ArrayList<Player> arr2 = (ArrayList<Player>) arrayOfPosibilities.get(0).clone();
-		
-		Collections.rotate(arr2, -1);
-		
-		for (Player player : arr2) {
-			System.out.println(player);
-		}
-		
-		arrayOfPosibilities.add(arr2);
-		
-		
-		System.out.println("-----------------VER CONTENIDO------------------");
-		System.out.println("-----------------PRIMERO------------------");
-		for (Player player : arrayOfPosibilities.get(0)) {
-			System.out.println(player);
-		}
-		
-		System.out.println("-----------------SEGUNDO------------------");
-		for (Player player : arrayOfPosibilities.get(1)) {
-			System.out.println(player);
-		}
-		
-		
-		System.out.println("total: "+arrayOfPosibilities.size());
-		System.out.println("-----------------SEPARADO------------------");
-		
-		
-		for(int i = 1; i<=arr.size()-1; i++) {
+		System.out.println(arrayOfPlayers.getSize());
+		for (int i = 0; i < arrayOfPlayers.getSize()-1; i++) {
+			System.out.println(i);
+			@SuppressWarnings("unchecked")
+			ArrayList<Player> arr2 = (ArrayList<Player>) arrayOfPosibilities.get(i).clone();
+			
 			Collections.rotate(arr2, -1);
-			System.out.println(".........................");
+			
 			for (Player player : arr2) {
 				System.out.println(player);
 			}
+			
 			arrayOfPosibilities.add(arr2);
+			
 		}
 		
-		System.out.println("----------CONTENIDO------------");
-		System.out.println("-----------------------------------");
+		System.out.println("-----------------VER CONTENIDO------------------");
 		
-		
-//		for (ArrayList<Player> arreglo : arrayOfPosibilities) {
-//			System.out.println("_________________________________");
-//			for (Player player : arreglo) {
-//				System.out.println(player);
-//			}
-//		}
-		
-		for (int i = 0; i < arrayOfPosibilities.size(); i++) {
-			System.out.println("---------------------|-----------------");
-			for (int j = 0; j < arrayOfPosibilities.get(i).size(); j++) {
-				System.out.println(arrayOfPosibilities.get(i).get(j).getName());
+		for (ArrayList<Player> arreglo : arrayOfPosibilities) {
+			System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+			for (Player player : arreglo) {
+				System.out.println(player);
 			}
 		}
 		
