@@ -139,20 +139,13 @@ public class MainMenu extends JFrame {
 			System.out.println("------------------TAMANNNNIO------------------");
 			System.out.println(arr.size());
 //			shuffle
-			do {
+//			do {
 			for (int i=0;i<arr.size();i++) {
-				int swap;
-					System.out.println("en el while");	
-			    	swap = randomNumber(arr.size()-1, -1);
-			    	System.out.println("swap : "+swap);	
-			    	System.out.println("i : "+i);	
-			    	int temp = k2[swap];
-			    	k2[swap] = k2[i];
-			    	k2[i]=temp;			    	
-			    System.out.println("primero : "+k[0][i]);	
-			    System.out.println("nuevo :" +k2[i]);	
+				do
+				k2[i] = randomNumber(arr.size(), 0);
+				while(evaluate2(i, k2));
 			}
-			}while(evaluate(arr, k2, k)); 				
+//			}while(evaluate(arr, k2, k)); 				
 			
 			k[p] = k2;
 //		RANDOM FIN
@@ -221,6 +214,14 @@ public class MainMenu extends JFrame {
 //		gui.setVisible(true);
 	}
 	
+	private boolean evaluate2(int i, int[] k2) {
+		for (int j = 0; j < i; j++) {
+			if(k2[i]==k2[j])
+				return true;
+		}
+		return false;
+	}
+
 	private boolean evaluate(ArrayList<Player> arr, int[] k2, int[][] k) {
 	boolean m;
 	boolean n = false;
