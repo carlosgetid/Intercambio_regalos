@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class MainMenu extends JFrame {
@@ -122,15 +121,9 @@ public class MainMenu extends JFrame {
 		ArrayList<Player> arr = arrayOfPlayers.randomArray();
 		
 		arrayOfPosibilities.add(arr);
-
-		for (Player player : arrayOfPosibilities.get(0)) {			
-			System.out.println(player);
-		}
 		
-		
-		System.out.println(arrayOfPlayers.getSize());
+//		clone and rotate array items
 		for (int i = 0; i < arrayOfPlayers.getSize()-1; i++) {
-			System.out.println(i);
 			@SuppressWarnings("unchecked")
 			ArrayList<Player> arr2 = (ArrayList<Player>) arrayOfPosibilities.get(i).clone();
 			
