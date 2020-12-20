@@ -150,17 +150,20 @@ public class MainMenu extends JFrame {
 			@SuppressWarnings("unchecked")
 			int[] k2 = k[0].clone();
 			
-			
 			do {
+				
 				do {
-					for (int i=0;i<arr.size();i++) {
-//						shuffle
-						do
-						k2[i] = randomNumber(arr.size(), 0);
-						while(checkPreviousNumbers(i, k2));
-					}
-				}while(checkFirstArray(arr, k2, k)); 				
+					do {
+						for (int i=0;i<arr.size();i++) {
+	//						shuffle
+							do
+							k2[i] = randomNumber(arr.size(), 0);
+							while(checkPreviousNumbers(i, k2));
+						}
+					}while(checkFirstArrayValueByValue(arr, k2, k)); 				
+				}while(checkWithOthersArrays(k2, k));			
 			}while(evaluate3(k2,k));
+			
 			k[p] = k2;
 //		RANDOM FIN
 			 p++;
@@ -228,6 +231,21 @@ public class MainMenu extends JFrame {
 //		gui.setVisible(true);
 	}
 	
+	private boolean checkWithOthersArrays(int[] k2, int[][] k) {
+		boolean x;
+		for(int z=0; z < k.length; z++){
+			System.out.println("valor de z : "+z);
+			if(Arrays.equals(k[z], k2)) {
+				x = true;
+				System.out.println("checkWithOthersArrays : "+x);
+				return x;
+			}
+		}
+		x = false;
+		System.out.println("checkWithOthersArrays : "+x);
+		return x;
+	}
+
 	private boolean evaluate3(int[] k2, int[][] k) {
 		System.out.println("este es el length :"+k[0].length);
 		for(int h = 0; h<k[0].length; h++){
@@ -255,7 +273,7 @@ public class MainMenu extends JFrame {
 		return false;
 	}
 
-	private boolean checkFirstArray(ArrayList<Player> arr, int[] k2, int[][] k) {
+	private boolean checkFirstArrayValueByValue(ArrayList<Player> arr, int[] k2, int[][] k) {
 	boolean m;
 	boolean n = false;
 	for (int j = 0; j < arr.size(); j++) {
