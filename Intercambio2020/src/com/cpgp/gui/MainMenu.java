@@ -139,9 +139,9 @@ public class MainMenu extends JFrame {
 			System.out.println("------------------TAMANNNNIO------------------");
 			System.out.println(arr.size());
 //			shuffle
+			do {
 			for (int i=0;i<arr.size();i++) {
 				int swap;
-				do {
 					System.out.println("en el while");	
 			    	swap = randomNumber(arr.size()-1, -1);
 			    	System.out.println("swap : "+swap);	
@@ -151,8 +151,8 @@ public class MainMenu extends JFrame {
 			    	k2[i]=temp;			    	
 			    System.out.println("primero : "+k[0][i]);	
 			    System.out.println("nuevo :" +k2[i]);	
-			    }while(evaluate(arr, k2, k)); 				
 			}
+			}while(evaluate(arr, k2, k)); 				
 			
 			k[p] = k2;
 //		RANDOM FIN
@@ -226,9 +226,13 @@ public class MainMenu extends JFrame {
 	boolean n = false;
 	for (int j = 0; j < arr.size(); j++) {
 		m = k2[j] == k[0][j];
-		if(j>0)
-			n = m ||  k2[j-1] == k[0][j-1];
+		System.out.println("solo : "+m);
+		if(m)
+			return m;
 	}
+	System.out.println(": "+ Arrays.toString(k[0]));
+	System.out.println(": "+ Arrays.toString(k2));
+	System.out.println(n);
 	return n;
 	}
 
