@@ -151,13 +151,7 @@ public class MainMenu extends JFrame {
 			    	k2[i]=temp;			    	
 			    System.out.println("primero : "+k[0][i]);	
 			    System.out.println("nuevo :" +k2[i]);	
-			    }while(
-			    		k2[0] == k[0][0] 
-			    		|| k2[1] == k[0][1] 
-			    				|| k2[2] == k[0][2] 
-			    						|| k2[3] == k[0][3]
-			    								|| k2[4] == k[0][4]
-			    										); 
+			    }while(evaluate(arr, k2, k)); 				
 			}
 			
 			k[p] = k2;
@@ -191,7 +185,7 @@ public class MainMenu extends JFrame {
 			Collections.rotate(arr2, -1);
 			
 			for (Player player : arr2) {
-				System.out.println(player);
+//				System.out.println(player);
 			}
 			
 			arrayOfPosibilities.add(arr2);
@@ -201,7 +195,7 @@ public class MainMenu extends JFrame {
 		System.out.println("-----------------VER CONTENIDO------------------");
 		
 		for (ArrayList<Player> arreglo : arrayOfPosibilities) {
-			System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+//			System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
 			for (Player player : arreglo) {
 				System.out.println(player);
 			}
@@ -227,7 +221,18 @@ public class MainMenu extends JFrame {
 //		gui.setVisible(true);
 	}
 	
-//	puede retornar el maxValue y el minValue
+	private boolean evaluate(ArrayList<Player> arr, int[] k2, int[][] k) {
+	boolean m;
+	boolean n = false;
+	for (int j = 0; j < arr.size(); j++) {
+		m = k2[j] == k[0][j];
+		if(j>0)
+			n = m ||  k2[j-1] == k[0][j-1];
+	}
+	return n;
+	}
+
+	//	puede retornar el maxValue y el minValue
 	private int randomNumber(int maxValue, int minValue) {
 		int r=(int)(Math.random()*(minValue-maxValue))+maxValue;
 		return r;
