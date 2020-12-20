@@ -127,6 +127,7 @@ public class MainMenu extends JFrame {
 		for (int i = 0; i < arr.size(); i++) {
 			k[0][i] = arr.get(i).getId();			
 		}
+		System.out.println(Arrays.toString(k[0]));
 		
 		int p = 1;
 		while (p < 10) {
@@ -139,13 +140,13 @@ public class MainMenu extends JFrame {
 			System.out.println("------------------TAMANNNNIO------------------");
 			System.out.println(arr.size());
 //			shuffle
-//			do {
+			do {
 			for (int i=0;i<arr.size();i++) {
 				do
 				k2[i] = randomNumber(arr.size(), 0);
 				while(evaluate2(i, k2));
 			}
-//			}while(evaluate(arr, k2, k)); 				
+			}while(evaluate(arr, k2, k)); 				
 			
 			k[p] = k2;
 //		RANDOM FIN
@@ -215,9 +216,17 @@ public class MainMenu extends JFrame {
 	}
 	
 	private boolean evaluate2(int i, int[] k2) {
+//		if(k2[i]==k[0][i]) {
+//			System.out.println("coincide con el de arriba");
+//			System.out.println("k2["+i+"]"+k2[i]+" vs "+"k[0]["+i+"]"+k[0][i]);
+//			return true;
+//		}
 		for (int j = 0; j < i; j++) {
-			if(k2[i]==k2[j])
+			if(k2[i]==k2[j]) {				
+				System.out.println("coincide con algun anterior");
+				System.out.println("k2["+i+"]"+k2[i]+" vs "+"k2["+j+"]"+k2[j]);
 				return true;
+			}
 		}
 		return false;
 	}
