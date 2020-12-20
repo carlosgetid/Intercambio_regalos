@@ -141,13 +141,14 @@ public class MainMenu extends JFrame {
 			System.out.println(arr.size());
 //			shuffle
 			do {
-			for (int i=0;i<arr.size();i++) {
-				do
-				k2[i] = randomNumber(arr.size(), 0);
-				while(evaluate2(i, k2));
-			}
-			}while(evaluate(arr, k2, k)); 				
-			
+			do {
+				for (int i=0;i<arr.size();i++) {
+					do
+					k2[i] = randomNumber(arr.size(), 0);
+					while(checkPreviousNumbers(i, k2));
+				}
+			}while(checkFirstArray(arr, k2, k)); 				
+			}while(evaluate3(k2,k));
 			k[p] = k2;
 //		RANDOM FIN
 			 p++;
@@ -215,7 +216,18 @@ public class MainMenu extends JFrame {
 //		gui.setVisible(true);
 	}
 	
-	private boolean evaluate2(int i, int[] k2) {
+	private boolean evaluate3(int[] k2, int[][] k) {
+		System.out.println("este es el length :"+k[0].length);
+		for(int h = 0; h<k[0].length; h++){
+			for(int g = 0; g<k[0].length; g++){
+				if(k[0][g] == k2[h] && k[0][h] == k2[g])
+					return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean checkPreviousNumbers(int i, int[] k2) {
 //		if(k2[i]==k[0][i]) {
 //			System.out.println("coincide con el de arriba");
 //			System.out.println("k2["+i+"]"+k2[i]+" vs "+"k[0]["+i+"]"+k[0][i]);
@@ -231,7 +243,7 @@ public class MainMenu extends JFrame {
 		return false;
 	}
 
-	private boolean evaluate(ArrayList<Player> arr, int[] k2, int[][] k) {
+	private boolean checkFirstArray(ArrayList<Player> arr, int[] k2, int[][] k) {
 	boolean m;
 	boolean n = false;
 	for (int j = 0; j < arr.size(); j++) {
