@@ -145,7 +145,6 @@ public class MainMenu extends JFrame {
 		
 		int p = 1;
 		while (p < 10) {
-			System.out.println("vuelta : "+p);
 //		RANDOM
 			@SuppressWarnings("unchecked")
 			int[] k2 = k[0].clone();
@@ -162,7 +161,7 @@ public class MainMenu extends JFrame {
 						}
 					}while(checkFirstArrayValueByValue(arr, k2, k)); 				
 				}while(checkWithOthersArrays(k2, k));			
-			}while(evaluate3(k2,k));
+			}while(checkNotGiftEachOther(k2,k));
 			
 			k[p] = k2;
 //		RANDOM FIN
@@ -246,7 +245,7 @@ public class MainMenu extends JFrame {
 		return x;
 	}
 
-	private boolean evaluate3(int[] k2, int[][] k) {
+	private boolean checkNotGiftEachOther(int[] k2, int[][] k) {
 		System.out.println("este es el length :"+k[0].length);
 //		for two players is allowed
 		if(k[0].length == 2) 
