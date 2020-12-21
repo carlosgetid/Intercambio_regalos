@@ -32,6 +32,7 @@ public class MainMenu extends JFrame {
 	public static JTable tblPlayers = new JTable();;
 	ArrayOfPlayers arrayOfPlayers = new ArrayOfPlayers();
 	private JButton btnListo;
+	private int resultados;
 	
 
 	/**
@@ -143,8 +144,10 @@ public class MainMenu extends JFrame {
 		}
 		System.out.println(Arrays.toString(k[0]));
 		
-		int p = 1;
-		while (p < 10) {
+		resultados = 1;
+		long start = System.currentTimeMillis();
+	    long end = start + 3000;
+		while (true) {
 //		RANDOM
 			@SuppressWarnings("unchecked")
 			int[] k2 = k[0].clone();
@@ -159,13 +162,19 @@ public class MainMenu extends JFrame {
 							k2[i] = randomNumber(arr.size(), 0);
 							while(checkPreviousNumbers(i, k2));
 						}
-					}while(checkFirstArrayValueByValue(arr, k2, k)); 				
+					}while(checkFirstArrayValueByValue(arr, k2, k)); 	
+					if(System.currentTimeMillis() > end) {
+			            break;
+			        }
 				}while(checkWithOthersArrays(k2, k));			
 			}while(checkNotGiftEachOther(k2,k));
 			
-			k[p] = k2;
+			k[resultados] = k2;
 //		RANDOM FIN
-			 p++;
+			resultados++;
+			if(System.currentTimeMillis() > end) {
+	            break;
+	        }
 		}
 			System.out.println("------------------RESULTADO-------------------");
 			System.out.println(Arrays.toString(k[0]));
@@ -232,8 +241,8 @@ public class MainMenu extends JFrame {
 	
 	private boolean checkWithOthersArrays(int[] k2, int[][] k) {
 		boolean x;
-		for(int z=1; z < k.length; z++){
-			System.out.println("valor de z : "+z);
+		for(int z=1; z < resultados; z++){
+			System.out.println("RESULTADOS : "+resultados);
 			if(Arrays.equals(k[z], k2)) {
 				x = true;
 				System.out.println("checkWithOthersArrays : "+x);
@@ -269,8 +278,8 @@ public class MainMenu extends JFrame {
 //		}
 		for (int j = 0; j < i; j++) {
 			if(k2[i]==k2[j]) {				
-				System.out.println("coincide con algun anterior");
-				System.out.println("k2["+i+"]"+k2[i]+" vs "+"k2["+j+"]"+k2[j]);
+//				System.out.println("coincide con algun anterior");
+//				System.out.println("k2["+i+"]"+k2[i]+" vs "+"k2["+j+"]"+k2[j]);
 				return true;
 			}
 		}
