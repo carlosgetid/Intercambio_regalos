@@ -138,7 +138,8 @@ public class MainMenu extends JFrame {
 		ArrayList<Player> arr = arrayOfPlayers.randomArray();
 		
 		System.out.println("------------------NEW VERSION------------------");
-		int[][] k = new int[10][arr.size()];
+//		int[][] k = new int[1000][arr.size()];
+		int[][] k = new int[2000][arr.size()];
 		for (int i = 0; i < arr.size(); i++) {
 			k[0][i] = arr.get(i).getId();			
 		}
@@ -146,7 +147,16 @@ public class MainMenu extends JFrame {
 		
 		resultados = 1;
 		long start = System.currentTimeMillis();
-	    long end = start + 3000;
+		
+		long end;
+		System.out.println("Cantidad : "+tblPlayers.getRowCount());
+		if(tblPlayers.getRowCount()<=2) 
+			end = start + 500;			
+		else if(tblPlayers.getRowCount()<=4) 
+			end = start + 1000;			
+		else
+			end = start + 3000;
+		
 		while (true) {
 //		RANDOM
 			@SuppressWarnings("unchecked")
@@ -164,17 +174,18 @@ public class MainMenu extends JFrame {
 						}
 					}while(checkFirstArrayValueByValue(arr, k2, k)); 	
 					if(System.currentTimeMillis() > end) {
+						System.out.println("DETENIDO POR TIEMPO");
 			            break;
 			        }
 				}while(checkWithOthersArrays(k2, k));			
 			}while(checkNotGiftEachOther(k2,k));
 			
-			k[resultados] = k2;
+			if(System.currentTimeMillis() > end) 
+				break;
+			else
+				k[resultados] = k2;
 //		RANDOM FIN
 			resultados++;
-			if(System.currentTimeMillis() > end) {
-	            break;
-	        }
 		}
 			System.out.println("------------------RESULTADO-------------------");
 			System.out.println(Arrays.toString(k[0]));
@@ -187,6 +198,25 @@ public class MainMenu extends JFrame {
 			System.out.println("vuelta 7: "+ Arrays.toString(k[7]));
 			System.out.println("vuelta 8: "+ Arrays.toString(k[8]));
 			System.out.println("vuelta 9: "+ Arrays.toString(k[9]));
+			System.out.println("vuelta 10: "+ Arrays.toString(k[10]));
+			System.out.println("vuelta 11: "+ Arrays.toString(k[11]));
+			System.out.println("vuelta 12: "+ Arrays.toString(k[12]));
+			System.out.println("vuelta 13: "+ Arrays.toString(k[13]));
+			System.out.println("vuelta 14: "+ Arrays.toString(k[14]));
+			System.out.println("vuelta 15: "+ Arrays.toString(k[15]));
+			System.out.println("vuelta 16: "+ Arrays.toString(k[16]));
+			System.out.println("vuelta 17: "+ Arrays.toString(k[17]));
+			System.out.println("vuelta 18: "+ Arrays.toString(k[18]));
+			System.out.println("vuelta 19: "+ Arrays.toString(k[19]));
+			System.out.println("vuelta 20: "+ Arrays.toString(k[20]));
+			System.out.println("vuelta 21: "+ Arrays.toString(k[21]));
+			System.out.println("vuelta 22: "+ Arrays.toString(k[22]));
+			System.out.println("vuelta 23: "+ Arrays.toString(k[23]));
+			System.out.println("vuelta 24: "+ Arrays.toString(k[24]));
+			System.out.println("vuelta 25: "+ Arrays.toString(k[25]));
+			System.out.println("vuelta 26: "+ Arrays.toString(k[26]));
+			System.out.println("Cantidad : "+tblPlayers.getRowCount());
+
 		System.out.println("------------------NEW VERSION FIN------------------");
 		
 		
@@ -245,17 +275,17 @@ public class MainMenu extends JFrame {
 			System.out.println("RESULTADOS : "+resultados);
 			if(Arrays.equals(k[z], k2)) {
 				x = true;
-				System.out.println("checkWithOthersArrays : "+x);
+//				System.out.println("checkWithOthersArrays : "+x);
 				return x;
 			}
 		}
 		x = false;
-		System.out.println("checkWithOthersArrays : "+x);
+//		System.out.println("checkWithOthersArrays : "+x);
 		return x;
 	}
 
 	private boolean checkNotGiftEachOther(int[] k2, int[][] k) {
-		System.out.println("este es el length :"+k[0].length);
+//		System.out.println("este es el length :"+k[0].length);
 //		for two players is allowed
 		if(k[0].length == 2) 
 			return false;
@@ -291,13 +321,13 @@ public class MainMenu extends JFrame {
 	boolean n = false;
 	for (int j = 0; j < arr.size(); j++) {
 		m = k2[j] == k[0][j];
-		System.out.println("solo : "+m);
+//		System.out.println("solo : "+m);
 		if(m)
 			return m;
 	}
-	System.out.println(": "+ Arrays.toString(k[0]));
-	System.out.println(": "+ Arrays.toString(k2));
-	System.out.println(n);
+//	System.out.println(": "+ Arrays.toString(k[0]));
+//	System.out.println(": "+ Arrays.toString(k2));
+//	System.out.println(n);
 	return n;
 	}
 
