@@ -150,7 +150,7 @@ public class MainMenu extends JFrame {
 
 		System.out.println("------------------NEW VERSION------------------");
 //		int[][] k = new int[1000][arr.size()];
-		int[][] k = new int[2000][arr.size()];
+		int[][] k = new int[999999][arr.size()];
 		for (int i = 0; i < arr.size(); i++) {
 			k[0][i] = arr.get(i).getId();			
 		}
