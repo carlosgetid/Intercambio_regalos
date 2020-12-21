@@ -149,7 +149,6 @@ public class MainMenu extends JFrame {
 		long start = System.currentTimeMillis();
 		
 		long end;
-		System.out.println("Cantidad : "+tblPlayers.getRowCount());
 		if(tblPlayers.getRowCount()<=2) 
 			end = start + 250;			
 		else if(tblPlayers.getRowCount()<=4) 
@@ -174,7 +173,6 @@ public class MainMenu extends JFrame {
 						}
 					}while(checkFirstArrayValueByValue(arr, k2, k)); 	
 					if(System.currentTimeMillis() > end) {
-						System.out.println("DETENIDO POR TIEMPO");
 			            break;
 			        }
 				}while(checkWithOthersArrays(k2, k));			
@@ -200,21 +198,7 @@ public class MainMenu extends JFrame {
 			System.out.println("vuelta 9: "+ Arrays.toString(k[9]));
 			System.out.println("vuelta 10: "+ Arrays.toString(k[10]));
 			System.out.println("vuelta 11: "+ Arrays.toString(k[11]));
-			System.out.println("vuelta 12: "+ Arrays.toString(k[12]));
-			System.out.println("vuelta 13: "+ Arrays.toString(k[13]));
-			System.out.println("vuelta 14: "+ Arrays.toString(k[14]));
-			System.out.println("vuelta 15: "+ Arrays.toString(k[15]));
-			System.out.println("vuelta 16: "+ Arrays.toString(k[16]));
-			System.out.println("vuelta 17: "+ Arrays.toString(k[17]));
-			System.out.println("vuelta 18: "+ Arrays.toString(k[18]));
-			System.out.println("vuelta 19: "+ Arrays.toString(k[19]));
-			System.out.println("vuelta 20: "+ Arrays.toString(k[20]));
-			System.out.println("vuelta 21: "+ Arrays.toString(k[21]));
-			System.out.println("vuelta 22: "+ Arrays.toString(k[22]));
-			System.out.println("vuelta 23: "+ Arrays.toString(k[23]));
-			System.out.println("vuelta 24: "+ Arrays.toString(k[24]));
-			System.out.println("vuelta 25: "+ Arrays.toString(k[25]));
-			System.out.println("vuelta 26: "+ Arrays.toString(k[26]));
+
 			System.out.println("Cantidad : "+tblPlayers.getRowCount());
 
 		System.out.println("------------------NEW VERSION FIN------------------");
@@ -223,31 +207,31 @@ public class MainMenu extends JFrame {
 		
 		
 		
-		arrayOfPosibilities.add(arr);
-		
-//		clone and rotate array items
-		for (int i = 0; i < arrayOfPlayers.getSize()-1; i++) {
-			@SuppressWarnings("unchecked")
-			ArrayList<Player> arr2 = (ArrayList<Player>) arrayOfPosibilities.get(i).clone();
-			
-			Collections.rotate(arr2, -1);
-			
-			for (Player player : arr2) {
+//		arrayOfPosibilities.add(arr);
+//		
+////		clone and rotate array items
+//		for (int i = 0; i < arrayOfPlayers.getSize()-1; i++) {
+//			@SuppressWarnings("unchecked")
+//			ArrayList<Player> arr2 = (ArrayList<Player>) arrayOfPosibilities.get(i).clone();
+//			
+//			Collections.rotate(arr2, -1);
+//			
+//			for (Player player : arr2) {
+////				System.out.println(player);
+//			}
+//			
+//			arrayOfPosibilities.add(arr2);
+//			
+//		}
+//		
+//		System.out.println("-----------------VER CONTENIDO------------------");
+//		
+//		for (ArrayList<Player> arreglo : arrayOfPosibilities) {
+////			System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+//			for (Player player : arreglo) {
 //				System.out.println(player);
-			}
-			
-			arrayOfPosibilities.add(arr2);
-			
-		}
-		
-		System.out.println("-----------------VER CONTENIDO------------------");
-		
-		for (ArrayList<Player> arreglo : arrayOfPosibilities) {
-//			System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
-			for (Player player : arreglo) {
-				System.out.println(player);
-			}
-		}
+//			}
+//		}
 		
 		
 //		imprimir
@@ -265,14 +249,13 @@ public class MainMenu extends JFrame {
 		
 //		arrayOfPosibilities.add();
 		
-//		Match gui = new Match(arrayOfPlayers, false, 0, 0);
-//		gui.setVisible(true);
+		Match gui = new Match(arr, k[2]);
+		gui.setVisible(true);
 	}
 	
 	private boolean checkWithOthersArrays(int[] k2, int[][] k) {
 		boolean x;
 		for(int z=1; z < resultados; z++){
-			System.out.println("RESULTADOS : "+resultados);
 			if(Arrays.equals(k[z], k2)) {
 				x = true;
 //				System.out.println("checkWithOthersArrays : "+x);

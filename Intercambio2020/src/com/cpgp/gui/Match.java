@@ -30,7 +30,7 @@ public class Match extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Match frame = new Match(null, false, 0, 0);
+					Match frame = new Match(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,12 +43,7 @@ public class Match extends JFrame {
 	 * Create the frame.
 	 * @param arrayOfPlayers 
 	 */
-	public Match(ArrayOfPlayers arrayOfPlayers, boolean vinoEnCadena, int primerJugadorID, int idanterior) {
-//		this.vinoEnCadena = vinoEnCadena;
-//		this.primerJugadorID = primerJugadorID;
-//		this.arrayOfPlayers = arrayOfPlayers;
-//		this.idanterior = idanterior;
-		
+	public Match(ArrayOfPlayers arrayOfPlayers, int[] k) {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 672, 485);
 		contentPane = new JPanel();
