@@ -151,11 +151,11 @@ public class MainMenu extends JFrame {
 		long end;
 		System.out.println("Cantidad : "+tblPlayers.getRowCount());
 		if(tblPlayers.getRowCount()<=2) 
-			end = start + 500;			
+			end = start + 250;			
 		else if(tblPlayers.getRowCount()<=4) 
-			end = start + 1000;			
+			end = start + 500;			
 		else
-			end = start + 3000;
+			end = start + 1000;
 		
 		while (true) {
 //		RANDOM
