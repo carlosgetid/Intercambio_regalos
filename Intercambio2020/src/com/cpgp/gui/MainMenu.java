@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.Color;
 
 public class MainMenu extends JFrame {
 
@@ -57,6 +58,7 @@ public class MainMenu extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 440, 469);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -67,6 +69,7 @@ public class MainMenu extends JFrame {
 		txtName.setColumns(10);
 		
 		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.setBackground(new Color(255, 215, 0));
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actionPerformedBtnAgregar(e);
@@ -88,6 +91,7 @@ public class MainMenu extends JFrame {
 
 		
 		btnListo = new JButton("Listo");
+		btnListo.setBackground(new Color(255, 215, 0));
 		btnListo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actionPerformedBtnListo(e);
@@ -97,6 +101,8 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnListo);
 		
 		JLabel lblNombre = new JLabel("Nombre :");
+		lblNombre.setForeground(Color.WHITE);
+		lblNombre.setBackground(Color.WHITE);
 		lblNombre.setBounds(48, 27, 70, 15);
 		contentPane.add(lblNombre);
 		
