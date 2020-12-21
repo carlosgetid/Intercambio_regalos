@@ -136,7 +136,7 @@ public class MainMenu extends JFrame {
 		ArrayList<ArrayList<Player>> arrayOfPosibilities = new ArrayList<ArrayList<Player>>();
 		
 		ArrayList<Player> arr = arrayOfPlayers.randomArray();
-		
+
 		System.out.println("------------------NEW VERSION------------------");
 //		int[][] k = new int[1000][arr.size()];
 		int[][] k = new int[2000][arr.size()];
@@ -249,7 +249,10 @@ public class MainMenu extends JFrame {
 		
 //		arrayOfPosibilities.add();
 		
-		Match gui = new Match(arr, k[2]);
+		int indice = randomNumber(resultados-1, 1);
+		System.out.println(indice);
+		
+		Match gui = new Match(arrayOfPlayers,k[0], k[indice], 0);
 		gui.setVisible(true);
 	}
 	
