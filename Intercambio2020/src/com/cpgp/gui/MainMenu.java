@@ -17,9 +17,8 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class MainMenu extends JFrame {
 
@@ -84,6 +83,9 @@ public class MainMenu extends JFrame {
 		scrollPane.setViewportView(tblPlayers);
 		
 		tblPlayers.setModel(arrayOfPlayers);
+		tblPlayers.getColumnModel().getColumn(0).setPreferredWidth(20);
+		tblPlayers.getColumnModel().getColumn(1).setPreferredWidth(200);
+
 		
 		btnListo = new JButton("Listo");
 		btnListo.addActionListener(new ActionListener() {
@@ -93,6 +95,10 @@ public class MainMenu extends JFrame {
 		});
 		btnListo.setBounds(295, 378, 117, 25);
 		contentPane.add(btnListo);
+		
+		JLabel lblNombre = new JLabel("Nombre :");
+		lblNombre.setBounds(48, 27, 70, 15);
+		contentPane.add(lblNombre);
 		
 		focusName();
 		
@@ -133,7 +139,6 @@ public class MainMenu extends JFrame {
 	
 
 	protected void actionPerformedBtnListo(ActionEvent e) {
-		ArrayList<ArrayList<Player>> arrayOfPosibilities = new ArrayList<ArrayList<Player>>();
 		
 		ArrayList<Player> arr = arrayOfPlayers.randomArray();
 

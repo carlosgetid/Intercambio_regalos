@@ -15,9 +15,14 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class Match extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5218405165854727866L;
 	private JPanel contentPane;
 	private int id;
 	private int[] receptores;
@@ -57,12 +62,14 @@ public class Match extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblEsElTurno = new JLabel("Es el turno de:");
-		lblEsElTurno.setBounds(267, 62, 128, 15);
+		lblEsElTurno.setBounds(12, 62, 648, 15);
+		lblEsElTurno.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblEsElTurno);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 45));
-		lblNewLabel.setBounds(210, 118, 346, 116);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 80));
+		lblNewLabel.setBounds(12, 124, 648, 116);
 		
 		System.out.println("esto traje turnos : "+Arrays.toString(turnos));
 		System.out.println("esto traje receptores : "+Arrays.toString(receptores));
@@ -95,14 +102,15 @@ public class Match extends JFrame {
 		contentPane.add(btnEmpezar);
 		
 		JLabel lblRealizarSorteo = new JLabel("Realizar sorteo");
-		lblRealizarSorteo.setBounds(278, 303, 210, 15);
+		lblRealizarSorteo.setBounds(12, 301, 648, 15);
+		lblRealizarSorteo.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(lblRealizarSorteo);
 		System.out.println("entro");
 	}
 	protected void actionPerformedBtnEmpezar(ActionEvent e) {
 		String name = arrayOfPlayers.getPlayerByID(receptores[id]).getName();
-
-		JOptionPane.showMessageDialog(this, name);
+		JOptionPane.showMessageDialog(this, name, "Te ha tocado con : ", JOptionPane.INFORMATION_MESSAGE);
+		
 		id++;
 		dispose();
 		if(id<arrayOfPlayers.getSize()) {

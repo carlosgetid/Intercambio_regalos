@@ -108,7 +108,7 @@ public class ArrayOfPlayers extends AbstractTableModel{
 //		}
 //	}
 //	
-	private String columnNames[]={"ID", "Name", "", ""};
+	private String columnNames[]={"ID", "Name"};
 	
 	public String getColumnName(int col) {
 		return columnNames[col];
